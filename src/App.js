@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import './App.css';
 import {Home} from "./pages/Home";
 import {Transaction} from "./pages/Transaction";
-import {Profile} from "./pages/Profile"
+import {Dashboard} from "./pages/Dashboard";
+import {NotFound} from "./pages/NotFound";
+
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import data from "./data/data.json"
@@ -14,8 +16,9 @@ class App extends Component {
         <Router>
           <Switch>
             <Route exact path='/' component={Home}/>
-            <Route path="/profile" component={Profile}/>
-            <Route path="/:id" component={Transaction}/>
+              <Route path="/transactions/:id" component={Transaction}/>
+              <Route path="/dashboard" component={Dashboard}/>
+            <Route component={NotFound}/>
           </Switch>
         </Router>
       </div>

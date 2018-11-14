@@ -1,12 +1,32 @@
 import React, {
     Component
 } from 'react';
+import data from "../../data/data";
+
 
 
 export class Transaction extends Component {
+    state = {
+        transaction:{}
+    }
+
+
+    componentWillMount(){
+        const t = data.transactions.filter(n => n.account === this.props.match.params.id)
+        this.setState({transaction:t[0] })
+        console.log(this.props.match)
+    }
 
     render() {
-        return ( <h1> This is the Transaction page</h1>
+        const {accountName, transactionType, amount} = this.state.transaction;
+        return (
+            <div>
+            <h1>{accountName}</h1>
+           <h1>{transactionType}</h1>
+
+
+            </div>
+
         )
     }
 }

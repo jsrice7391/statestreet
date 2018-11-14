@@ -1,5 +1,5 @@
 import React from "react";
-import {Link} from "react-router";
+import {Link} from "react-router-dom";
 
 
 const TableRow = (props) => {
@@ -7,7 +7,7 @@ const TableRow = (props) => {
             <tbody>
                 {props.transactions.map((t, index) => (
                     <tr key={index}>
-                        <td>{t.account}</td>
+                        <td><Link to={`/transactions/${t.account}`}>{t.account}</Link></td>
                         <td>{t.accountName}</td>
                         <td>{t.currencyCode}</td>
                         <td>{t.amount}</td>

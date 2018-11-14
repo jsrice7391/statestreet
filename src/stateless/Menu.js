@@ -17,7 +17,7 @@ const MenuItem = (props) => {
     return (
         <div>
         {props.choices.map((c, index) => (
-            <label for={c}>
+            <label key={index}>
             <input type="checkbox" name={c} value={c} key={index}/>
             {c}
               <br/>
