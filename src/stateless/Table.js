@@ -7,7 +7,7 @@ const TableRow = (props) => {
             <tbody>
                 {props.transactions.map((t, index) => (
                     <tr key={index}>
-                        <td><Link to={`/transactions/${t.account}`}>{t.account}</Link></td>
+                        <td><a href="#" onClick={() => props._toggleDetail(t)}><b>{t.account}</b></a></td>
                         <td>{t.accountName}</td>
                         <td>{t.currencyCode}</td>
                         <td>{t.amount}</td>
@@ -27,8 +27,7 @@ export const Table = (props) => {
             ))} 
             </tr>       
         </thead>
-   
-            <TableRow transactions={props.transactions}/>
+            <TableRow transactions={props.transactions} _toggleDetail={props._toggleDetail}/>
         </table>
     )
 }

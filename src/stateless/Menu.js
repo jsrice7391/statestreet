@@ -6,7 +6,7 @@ export const Menu = (props) => {
         <div className="menuStyle">
             <h4>{props.title}</h4>
             <form>
-                <MenuItem choices={props.choices}/>
+                <MenuItem choices={props.choices} _handleChange={props.handleChange} checked={props.checked} filterTable={props.filterTable}/>
             </form>
      
         </div>
@@ -18,7 +18,7 @@ const MenuItem = (props) => {
         <div>
         {props.choices.map((c, index) => (
             <label key={index}>
-            <input type="checkbox" name={c} value={c} key={index}/>
+            <input type="checkbox" name={c} value={c} key={index} onChange={() => props._handleChange}/>
             {c}
               <br/>
             </label>

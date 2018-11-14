@@ -2,6 +2,7 @@ import React, {
     Component
 } from 'react';
 import data from "../../data/data";
+import {DisplayBox} from "../../stateless/DisplayBox"
 
 
 
@@ -23,8 +24,6 @@ export class Transaction extends Component {
             <div>
             <h1>{accountName}</h1>
            <h1>{transactionType}</h1>
-
-
             </div>
 
         )

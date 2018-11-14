@@ -4,10 +4,7 @@ import {Home} from "./pages/Home";
 import {Transaction} from "./pages/Transaction";
 import {Dashboard} from "./pages/Dashboard";
 import {NotFound} from "./pages/NotFound";
-
-
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import data from "./data/data.json"
 
 class App extends Component {
   render(){
