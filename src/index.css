@@ -21,6 +21,18 @@ table {
   width: 80%;
 }
 
+.menuStyle{
+  background-color: grey;
+  padding: 5%;
+  margin: 5% 2.5%;
+  border-radius: 20%;
+}
+
+input,
+label{
+  clear:both;
+  
+}
 th{
   text-align: left;
 }

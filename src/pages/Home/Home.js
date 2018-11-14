@@ -30,8 +30,9 @@ export class Home extends Component {
         <h1>My Transactions</h1>
         <hr/>
         <div className="menus">
-          <Menu/>
-         
+        <h3>Filters</h3>
+          <Menu title="Account Name" choices={this.state.accountName}/>
+         <Menu title="Transaction Types" choices={this.state.types}/>
         </div>
         <div className="table">
         <Table columns={columns} transactions={transactions}/>
