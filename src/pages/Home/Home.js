@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import data from "../../data/data"
-import {Grid, Row, Col} from "react-bootstrap";
-import {Table} from "../../stateless/Table";
+import {Table, Menu} from "../../stateless";
 
 
 export class Home extends Component {
@@ -13,25 +12,30 @@ export class Home extends Component {
       types:[],
       accountName: [],
       searchTerms:[],
-      columns: []
+      columns: [""]
     }
   }
 
   componentWillMount(){
-    const vals=Object.keys(data.transactions[0])
+    // const vals=Object.keys(data.transactions[0])
     const uniqueAccount = [...new Set(data.transactions.map(item => item.accountName))];
     const uniqueType = [...new Set(data.transactions.map(item => item.transactionType))];
     console.log(`There are this many transactions: ${data.transactions.length}`)
-    this.setState({transactions: data.transactions, accountName: uniqueAccount, types: uniqueType, columns:vals})
+    this.setState({transactions: data.transactions, accountName: uniqueAccount, types: uniqueType, columns:["account no.", "Acount Name", "Currency","amount","transactiontype"]})
   }
   render() {
     let {transactions, columns} = this.state
     return (
       <div>
-        <h1>My Transations</h1>
+        <h1>My Transactions</h1>
         <hr/>
-        <div>
-          <Table columns={columns} transactions={transactions}/>
+        <div className="menus">
+          <Menu/>
+         
+        </div>
+        <div className="table">
+        <Table columns={columns} transactions={transactions}/>
+          
         </div>
       </div>
     );

@@ -7,7 +7,11 @@ const TableRow = (props) => {
             <tbody>
                 {props.transactions.map((t, index) => (
                     <tr key={index}>
-                        <td key={index}>{t["account"]}</td>
+                        <td>{t.account}</td>
+                        <td>{t.accountName}</td>
+                        <td>{t.currencyCode}</td>
+                        <td>{t.amount}</td>
+                        <td>{t.transactionType}</td>
                     </tr>
                 ))}
             </tbody>
@@ -19,7 +23,7 @@ export const Table = (props) => {
             <thead>  
                 <tr>
             {props.columns.map((col, index) => (
-                <th key={index}>{col}</th>
+                <th key={index}>{col.toUpperCase()}</th>
             ))} 
             </tr>       
         </thead>
