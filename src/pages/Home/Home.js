@@ -14,10 +14,8 @@ export class Home extends Component {
       transactions: [],
       types:[],
       checked: false,
-      filteredTerms: new Map(),
-      columns: [""],
+      filteredTerms: [],
       searched: false,
-      transaction: {}
     }
   }
   componentWillMount(){
@@ -30,7 +28,28 @@ export class Home extends Component {
             columns: ["account no.", "Acount Name", "Currency", "amount", "transactiontype"]
           })
     }
-    
+
+    _filterTable = (c, e) => {
+      if(e.target.checked){
+        this.setState({filteredTerms: [...this.state.filteredTerms, c]}, () =>{
+          this._renderFiltered();
+        });
+        }else{
+          this.setState({filteredTerms: this.state.filteredTerms.filter(term => term !== c)}, () => {
+            this._renderFiltered();
+          })
+      }
+      console.log(`This is C: ${c} and this is e: ${e.target.checked}`)
+    }
+    _renderFiltered = () =>{
+      if(this.state.filteredTerms.length > 0){
+        this.setState({
+          transactions: this.state.transactions.filter(t => this.state.filteredTerms.includes(t.accountName) || this.state.filteredTerms.includes(t.transactionType))
+        })
+      }else{
+        this.setState({transactions: data.transactions});
+      }
+    }
   render() {
     let {columns,searched,transactions,transaction} = this.state;
     return (
@@ -39,8 +58,8 @@ export class Home extends Component {
         <hr/>
         <div className="menus">
         <h3>Filters</h3>
-        <Menu title="Account Name" choices={this.state.accountName} checked={this.state.filteredTerms} filterTable={this._filterTable}/>
-        <Menu title="Transaction Types" choices={this.state.types}/>
+        <Menu title="Account Name" choices={this.state.accountName} _filterTable={this._filterTable}/>
+        <Menu title="Transaction Types" choices={this.state.types} _filterTable={this._filterTable}/>
         </div>
         <div className="table">
         <Table columns={columns} transactions={transactions} _toggleDetail={this._toggleDetail}/>

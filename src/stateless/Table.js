@@ -2,11 +2,6 @@ import React from "react";
 import {Link} from "react-router-dom";
 import {List} from "react-virtualized";
 
-
-const listHeight = 600;
-const rowHeight = 50;
-const rowWidth = 800;
-
 const TableRow = (props) => {
     return (
             <tbody>
