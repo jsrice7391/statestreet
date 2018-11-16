@@ -30,6 +30,7 @@ This will run the build process for my React app and then it will deploy it to t
 git clone https://github.com/jsrice7391/statestreet.git
 ```
 This wiill create a local folder that will have the application inside of it.
+
 3. Change the directory into the new folder, install the dependencies (packages) and run the application.
 ```
 cd statestreet
