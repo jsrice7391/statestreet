@@ -4,7 +4,7 @@ import React from "react";
 export const Menu = (props) => {
     return (
         <div className="menuStyle">
-            <h4>{props.title}</h4>
+            <p>{props.title}</p>
             <form>
                 <MenuItem choices={props.choices} _handleChange={props.handleChange} checked={props.checked} _filterTable={props._filterTable}/>
             </form>
@@ -15,7 +15,7 @@ export const Menu = (props) => {
 
 const MenuItem = (props) => {
     return (
-        <div>
+        <div className="inputs">
         {props.choices.map((c, index) => (
             <label key={index}>
             <input type="checkbox" name={c} value={c} key={index} onChange={(e) => props._filterTable(c, e)}/>
