@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import data from "../../data/data"
-import {Table, Menu} from "../../stateless";
+import {Table, Menu, Pie} from "../../stateless";
 import API from "../../utils/API";
 import {List} from "react-virtualized";
 import {Link} from "react-router-dom"
@@ -16,17 +16,18 @@ export class Home extends Component {
       checked: false,
       filteredTerms: [],
       searched: false,
+      filtered:false
     }
   }
   componentWillMount = () =>{
-          const uniqueAccount = [...new Set(data.transactions.map(item => item.accountName))];
-          const uniqueType = [...new Set(data.transactions.map(item => item.transactionType))];
-          this.setState({
-            transactions: data.transactions,
-            accountNames: uniqueAccount,
-            types: uniqueType,
-            columns: ["account no.", "Acount Name", "Currency", "amount", "transactiontype"]
-          })
+                const uniqueAccount = [...new Set(data.transactions.map(item => item.accountName))];
+                const uniqueType = [...new Set(data.transactions.map(item => item.transactionType))];
+                this.setState({
+                  transactions: data.transactions,
+                  accountNames: uniqueAccount,
+                  types: uniqueType,
+                  columns: ["account no.", "Acount Name", "Currency", "amount", "transactiontype"]
+                })
     }
 
     _filterTable = (c, e) => {
@@ -48,19 +49,21 @@ export class Home extends Component {
         let foundType = this.state.filteredTerms.some(r => this.state.types.includes(r))
         if(foundAccountName && foundType){
                  this.setState({
-                   transactions: this.state.transactions.filter(t => this.state.filteredTerms.includes(t.accountName) &&this.state.filteredTerms.includes(t.transactionType))
+                   transactions: this.state.transactions.filter(t => this.state.filteredTerms.includes(t.accountName) &&this.state.filteredTerms.includes(t.transactionType)),
+                   filtered: true
                  })
           
         }else if(foundAccountName || foundType){
                   this.setState({
-                    transactions: this.state.transactions.filter(t => this.state.filteredTerms.includes(t.accountName) || this.state.filteredTerms.includes(t.transactionType))
+                    transactions: this.state.transactions.filter(t => this.state.filteredTerms.includes(t.accountName) || this.state.filteredTerms.includes(t.transactionType)),
+                    filtered: true
                   })
       }else{
-        this.setState({transactions: data.transactions});
+        this.setState({transactions: data.transactions,filtered:false});
       }
     }
   render() {
-    let {columns,searched,transactions,transaction} = this.state;
+    let {columns,searched,transactions,transaction,filtered} = this.state;
     return (
       <div>
         <h1>My Transactions: {transactions.length}</h1>
