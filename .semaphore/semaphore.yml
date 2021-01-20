@@ -23,3 +23,6 @@ blocks:
         - name: Install
           commands:
             - yarn --version
+promotions:
+  - name: Promotion 1
+    pipeline_file: pipeline_2.yml
