@@ -24,5 +24,7 @@ blocks:
           commands:
             - yarn --version
 promotions:
-  - name: Promotion 1
+  - name: Deploy Docker
     pipeline_file: pipeline_2.yml
+  - name: Deploy S3
+    pipeline_file: pipeline_3.yml
