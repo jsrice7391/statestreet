@@ -14,3 +14,12 @@ blocks:
             - checkout
             - yarn install
             - yarn test
+  - name: yarn deploy
+    task:
+      prologue:
+        commands:
+          - echo "I did a thing"
+      jobs:
+        - name: Install
+          commands:
+            - yarn --version
